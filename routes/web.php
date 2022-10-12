@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminController as BackendAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin/login', [BackendAdminController::class, 'index'])->name('admin.login');
+Route::get('/admin/forget', [BackendAdminController::class, 'forgetPassword'])->name('admin.forget');
 
 //admin route
 Route::middleware(['auth','verified'])->group(function(){
